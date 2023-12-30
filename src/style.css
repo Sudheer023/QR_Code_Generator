@@ -1,0 +1,10 @@
+.alertmessage{
+    color: wheat;
+    height: 50px;
+    border-radius: 16px;
+    width: 225px;
+    margin: auto;
+    text-align: center;
+    line-height: 50px;
+    background-color: red;
+}
