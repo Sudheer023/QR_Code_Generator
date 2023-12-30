@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> QR Code Generator</title>
+    <!-- <link href="/dist/output.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+<body>
+    <h1 class="bg-blue-500 p-4 text-center text-white text-lg m-6" >Generate QR Code for a Location</h1>
+<div class="bg-red-300 p-20 rounded-t-lg mx-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500  "  >
+    <label class="text-xl text-white hover:text-opacity-50" for="locationLink">Enter the Google Maps location link:</label>
+    <input class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-7/12 rounded-md sm:text-sm focus:ring-1" type="text" id="locationLink" placeholder="https://www.google.com/maps/place/..."/><br>
+    <button class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onclick="generateQRCode()">Generate QR Code</button>
+    <button  class="bg-white p-1.5 rounded-b-lg hover:bg-black hover:text-white  mx-8/12 " onclick="removee()" >Clear</button>
+
+    <!-- Display the generated QR code -->
+    <div  class="py-2" id="qrcode"></div>
+</div>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+
+         function  removee(){
+            var locationLink = document.getElementById('locationLink');
+            locationLink.value=''
+            document.getElementById('qrcode').innerText=""
+         }
+        function generateQRCode() {
+            // Get the input value from the user
+            var locationLink = document.getElementById('locationLink').value;
+
+            // Get the element where the QR code will be displayed
+            var qrcodeElement = document.getElementById('qrcode');
+
+            // Clear any existing QR code
+            qrcodeElement.innerHTML = '';
+
+            // Create a QR code for the location link
+            var qrcode1 = new QRCode(qrcodeElement, {
+                text: locationLink,
+                width: 240,
+                height: 240
+            });
+        }
+    </script>
+</body>
+</html>
